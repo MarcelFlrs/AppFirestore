@@ -60,6 +60,15 @@ class MainFragment : Fragment(),
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        // Firestore
+        firestore = Firebase.firestore
+
+        // Get the 50 highest rated restaurants
+        query = firestore.collection("restaurants")
+            .orderBy("avgRating", Query.Direction.DESCENDING)
+            .limit(LIMIT.toLong())
+
         super.onViewCreated(view, savedInstanceState)
 
         // View model
@@ -215,7 +224,6 @@ class MainFragment : Fragment(),
             // Add restaurant
             restaurantsRef.add(randomRestaurant)
         }
-        showTodoToast()
     }
 
     private fun showSignInErrorDialog(@StringRes message: Int) {
