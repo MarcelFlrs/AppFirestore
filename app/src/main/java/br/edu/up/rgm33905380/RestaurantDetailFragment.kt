@@ -157,7 +157,7 @@ class RestaurantDetailFragment : Fragment(),
                     // Show failure message and hide keyboard
                     hideKeyboard()
                     Snackbar.make(
-                        requireView().findViewById(android.R.id.content), "Failed to add rating",
+                        requireView(), "Failed to add rating",
                             Snackbar.LENGTH_SHORT).show()
                 }
     }
